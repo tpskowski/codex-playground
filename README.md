@@ -16,3 +16,16 @@ The build will produce `src/main/resources/webapp/js/app.js`. Open `src/main/res
 ## Deployment
 
 The contents of `src/main/resources/webapp` can be pushed to GitHub Pages or any static host to serve the application.
+
+## GitHub Pages Workflow
+
+This repository includes a GitHub Actions workflow at `.github/workflows/deploy.yml`.
+It builds the project using:
+
+```bash
+mvn -f webapp/pom.xml package
+```
+
+After a successful build the workflow deploys `webapp/src/main/resources/webapp`
+to the `gh-pages` branch using `peaceiris/actions-gh-pages`. Pushing to `main`
+will automatically publish the updated static site.
